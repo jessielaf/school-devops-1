@@ -24,7 +24,7 @@ def add(student=None):
     return student.student_id
 
 
-def get_by_id(student_id=None, subject=None):
+def get_by_id(student_id=None):
     student = student_db.get(doc_id=int(student_id))
     if not student:
         return 'not found', 404

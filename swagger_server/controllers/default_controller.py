@@ -3,7 +3,7 @@ import six
 
 from swagger_server.models.student import Student  # noqa: E501
 from swagger_server import util
-from swagger_server.service.student_service import add, get_by_id
+from swagger_server.service.student_service import add, get_by_id, delete
 
 
 def add_student(body=None):  # noqa: E501
@@ -32,11 +32,7 @@ def delete_student(student_id):  # noqa: E501
 
     :rtype: None
     """
-
-    if connexion.request.is_json:
-        return delete_student(student_id)
-
-    return 500,'error'
+    return delete(student_id)
 
 
 def get_student_by_id(student_id):  # noqa: E501
@@ -51,7 +47,4 @@ def get_student_by_id(student_id):  # noqa: E501
     """
 
 
-    if connexion.request.is_json:
-        return get_by_id(student_id)
-
-    return 500,'error'
+    return get_by_id(student_id)
